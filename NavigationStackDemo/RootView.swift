@@ -13,25 +13,29 @@ enum AppNav {
 
 struct RootView: View {
     
+    @State var selectedTab: Tabs = .home
+    
     @State var path:NavigationPath = NavigationPath()
     @State var stackPath:[String] = []
     
     var body: some View {
         
         NavigationStack(path: $path){
-            TabView{
-                
-                
-                
-                HomeView(path: $path)
-                    .tabItem {
-                        Label("Home", systemImage: "house")
+                            
+                VStack(spacing:0){
+                    
+                    switch selectedTab {
+                    case .home:
+                        HomeView(path: $path)
+                    case .modules:
+                        LearnView(path: $path)
                     }
-                LearnView(path: $path)
-                    .tabItem {
-                        Label("Learn", systemImage: "list.bullet")
-                    }
-            }
+                    
+                    Spacer()
+                    
+                    CustomTabBar(selectedTab: $selectedTab)
+                }
+            
         }
         
     }
