@@ -10,6 +10,7 @@ import SwiftUI
 enum Tabs:Int {
     case home = 0
     case modules = 1
+    case saved = 2
 }
 
 struct CustomTabButtonStyle: ButtonStyle {
@@ -47,6 +48,14 @@ struct CustomTabBar: View {
             })
             .buttonStyle(CustomTabButtonStyle())
             .foregroundColor(selectedTab == .modules ? Color.black : Color.gray)
+            
+            Button(action: {
+                selectedTab = .saved
+            }, label: {
+                TabBarButton(buttonText: "Saved", imageName: "bookmark")
+            })
+            .buttonStyle(CustomTabButtonStyle())
+            .foregroundColor(selectedTab == .saved ? Color.black : Color.gray)
             
         }
         .padding(.horizontal)

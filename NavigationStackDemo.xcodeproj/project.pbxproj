@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B27871E2AE9858B00662268 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B27871D2AE9858B00662268 /* SavedView.swift */; };
 		8B373F9B2AE8107000EBC046 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B373F9A2AE8107000EBC046 /* HomeView.swift */; };
 		8B373F9D2AE8117300EBC046 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B373F9C2AE8117300EBC046 /* LearnView.swift */; };
 		8B373FA02AE8389500EBC046 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B373F9F2AE8389500EBC046 /* TabBarButton.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B27871D2AE9858B00662268 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		8B373F9A2AE8107000EBC046 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8B373F9C2AE8117300EBC046 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		8B373F9F2AE8389500EBC046 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				8BA3C8D32AE1545600FDD7D1 /* RootView.swift */,
 				8B373F9A2AE8107000EBC046 /* HomeView.swift */,
 				8B373F9C2AE8117300EBC046 /* LearnView.swift */,
+				8B27871D2AE9858B00662268 /* SavedView.swift */,
 				8B373FA32AE83EB800EBC046 /* Modules */,
 				8B373F9E2AE8384800EBC046 /* CustomTabBar */,
 				8BA3C8D52AE1545700FDD7D1 /* Assets.xcassets */,
@@ -176,6 +179,7 @@
 				8BA3C8D42AE1545600FDD7D1 /* RootView.swift in Sources */,
 				8B373FAB2AE8471D00EBC046 /* ModuleDetailView.swift in Sources */,
 				8BA3C8D22AE1545600FDD7D1 /* NavigationStackDemoApp.swift in Sources */,
+				8B27871E2AE9858B00662268 /* SavedView.swift in Sources */,
 				8B373FA02AE8389500EBC046 /* TabBarButton.swift in Sources */,
 				8B373FA22AE8393E00EBC046 /* CustomTabBar.swift in Sources */,
 				8B373F9D2AE8117300EBC046 /* LearnView.swift in Sources */,

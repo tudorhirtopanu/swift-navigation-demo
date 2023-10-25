@@ -12,7 +12,16 @@ struct HomeView: View {
     @Binding var path:NavigationPath
     
     var body: some View {
-        Text("Home View")
+        VStack {
+            
+            Button(action: {
+                path.append(ModuleNavigation.java)
+            }, label: {
+                Text("Feature View")
+            })
+            
+            Text("Home View")
+        }
     }
 }
 

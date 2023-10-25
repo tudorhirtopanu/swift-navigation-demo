@@ -29,11 +29,23 @@ struct RootView: View {
                         HomeView(path: $path)
                     case .modules:
                         LearnView(path: $path)
+                    case .saved:
+                        SavedView(path: $path)
                     }
                     
                     Spacer()
                     
                     CustomTabBar(selectedTab: $selectedTab)
+                }
+                .navigationDestination(for: ModuleNavigation.self) { state in
+                    switch state {
+                    case .java:
+                        ModuleView(module: "Java", destination: .Java, path: $path)
+                    case .python:
+                        ModuleView(module: "Python", destination: .Python, path: $path)
+                    case .swift:
+                        ModuleView(module: "Swift", destination: .Swift, path: $path)
+                    }
                 }
             
         }
