@@ -27,9 +27,16 @@ struct ModuleView: View {
             
             Text(module)
             
+            Image("\(module)Icon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100)
+            
             NavigationLink(value: destination, label: {
                 Text("Go to Detail View")
             })
+            
+            
             
         }
         .navigationDestination(for: ModuleDetailNavigation.self) { state in

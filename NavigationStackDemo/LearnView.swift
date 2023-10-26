@@ -28,15 +28,33 @@ struct LearnView: View {
                 List{
                     
                     NavigationLink(value: ModuleNavigation.java, label: {
-                        Text("Java")
+                        HStack {
+                            Image("JavaIcon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 35)
+                            Text("Java")
+                        }
                     })
                     
                     NavigationLink(value: ModuleNavigation.python, label: {
-                        Text("Python")
+                        HStack {
+                            Image("PythonIcon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 35)
+                            Text("Python")
+                        }
                     })
                     
                     NavigationLink(value: ModuleNavigation.swift, label: {
-                        Text("Swift")
+                        HStack {
+                            Image("SwiftIcon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 35)
+                            Text("Swift")
+                        }
                     })
                     
                 }

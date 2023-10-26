@@ -1,39 +1,37 @@
 //
-//  SavedView.swift
+//  ModuleButton.swift
 //  NavigationStackDemo
 //
-//  Created by Tudor Hirtopanu on 25/10/2023.
+//  Created by Tudor Hirtopanu on 26/10/2023.
 //
 
 import SwiftUI
 
-struct SavedView: View {
+struct ModuleButton: View {
     
-    @Binding var path:NavigationPath
+    var module:String
     
     var body: some View {
-        VStack{
-            
+        VStack {
             Button(action: {
                 
             }, label: {
                 ZStack {
                     
                     VStack {
-                        Image("SwiftIcon")
+                        Image("\(module)Icon")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 35)
-                        Text("Swift")
+                        Text(module)
                     }
                 }
             })
             .foregroundStyle(Color.black)
-            
         }
     }
 }
 
 #Preview {
-    SavedView(path: .constant(NavigationPath()))
+    ModuleButton(module: "Java")
 }
