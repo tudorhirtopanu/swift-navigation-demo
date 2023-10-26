@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-enum AppNav {
-    
+enum AppNav:Hashable {
+    case module(ModuleNavigation)
+    case moduleDetail(ModuleDetailNavigation)
 }
 
 struct RootView: View {
@@ -16,7 +17,8 @@ struct RootView: View {
     @State var selectedTab: Tabs = .home
     
     @State var path:NavigationPath = NavigationPath()
-    @State var stackPath:[String] = []
+    @State var stackPath:[AppNav] = []
+    @StateObject var nm = NavigationManager()
     
     var body: some View {
         
@@ -27,10 +29,12 @@ struct RootView: View {
                     switch selectedTab {
                     case .home:
                         HomeView(path: $path)
+                            .environmentObject(nm)
                     case .modules:
                         LearnView(path: $path)
                     case .saved:
                         SavedView(path: $path)
+                            .environmentObject(nm)
                     }
                     
                     Spacer()
@@ -47,6 +51,7 @@ struct RootView: View {
                         ModuleView(module: "Swift", destination: .Swift, path: $path)
                     }
                 }
+                
             
         }
         

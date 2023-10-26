@@ -10,21 +10,28 @@ import SwiftUI
 struct HomeView: View {
     
     @Binding var path:NavigationPath
+    @EnvironmentObject var nm: NavigationManager
     
     var body: some View {
         VStack {
             
             Button(action: {
-                path.append(ModuleNavigation.java)
+//                path.append(nm.moduleDestination)
+//                if nm.moduleDetailDestination != nil {
+//                    path.append(nm.moduleDetailDestination)
+//                }
+                //path.append(nm.moduleDetailDestination)
             }, label: {
                 Text("Feature View")
             })
             
             Text("Home View")
         }
+        
     }
 }
 
 #Preview {
     HomeView(path: .constant(NavigationPath()))
+        .environmentObject(NavigationManager())
 }

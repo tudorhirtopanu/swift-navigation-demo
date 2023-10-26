@@ -10,12 +10,13 @@ import SwiftUI
 struct SavedView: View {
     
     @Binding var path:NavigationPath
+    @EnvironmentObject var nm: NavigationManager
     
     var body: some View {
         VStack{
             
             Button(action: {
-                
+                nm.moduleDestination = .swift
             }, label: {
                 ZStack {
                     
@@ -36,4 +37,5 @@ struct SavedView: View {
 
 #Preview {
     SavedView(path: .constant(NavigationPath()))
+        .environmentObject(NavigationManager())
 }
