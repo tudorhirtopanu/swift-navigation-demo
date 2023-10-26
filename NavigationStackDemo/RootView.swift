@@ -16,8 +16,8 @@ struct RootView: View {
     
     @State var selectedTab: Tabs = .home
     
-    @State var path:NavigationPath = NavigationPath()
-    @State var stackPath:[AppNav] = []
+   // @State var path:NavigationPath = NavigationPath()
+    @State var path:[AppNav] = []
     @StateObject var nm = NavigationManager()
     
     var body: some View {
@@ -40,6 +40,20 @@ struct RootView: View {
                     Spacer()
                     
                     CustomTabBar(selectedTab: $selectedTab)
+                }
+                .navigationDestination(for: AppNav.self) { state in
+                    switch state {
+                        
+                    case .module(.java):
+                        ModuleView(module: "Java", destination: .Java, path: $path)
+                    case .module(.python):
+                        ModuleView(module: "Python", destination: .Python, path: $path)
+                    case .module(.swift):
+                        ModuleView(module: "Swift", destination: .Swift, path: $path)
+                    case .moduleDetail(_):
+                        EmptyView()
+                        
+                    }
                 }
                 .navigationDestination(for: ModuleNavigation.self) { state in
                     switch state {

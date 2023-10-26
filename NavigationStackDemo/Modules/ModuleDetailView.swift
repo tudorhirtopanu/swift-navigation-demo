@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ModuleDetailView: View {
     
-    @Binding var path:NavigationPath
+   // @Binding var path:NavigationPath
+    @Binding var path:[AppNav]
     var module:String
     
     var body: some View {
@@ -22,5 +23,5 @@ struct ModuleDetailView: View {
 }
 
 #Preview {
-    ModuleDetailView(path: .constant(NavigationPath()), module: "Java")
+    ModuleDetailView(path: .constant([]), module: "Java")
 }

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SavedView: View {
     
-    @Binding var path:NavigationPath
+    //@Binding var path:NavigationPath
+    @Binding var path:[AppNav]
     @EnvironmentObject var nm: NavigationManager
     
     var body: some View {
@@ -36,6 +37,6 @@ struct SavedView: View {
 }
 
 #Preview {
-    SavedView(path: .constant(NavigationPath()))
+    SavedView(path: .constant([]))
         .environmentObject(NavigationManager())
 }

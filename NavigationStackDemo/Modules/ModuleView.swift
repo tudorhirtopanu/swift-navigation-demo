@@ -20,7 +20,8 @@ struct ModuleView: View {
     
     var module:String
     var destination:ModuleDetailNavigation
-    @Binding var path:NavigationPath
+   // @Binding var path:NavigationPath
+    @Binding var path:[AppNav]
     
     var body: some View {
         VStack {
@@ -52,9 +53,10 @@ struct ModuleView: View {
             
         }
         
+        
     }
 }
 
 #Preview {
-    ModuleView(module: "Java", destination: .Java, path: .constant(NavigationPath()))
+    ModuleView(module: "Java", destination: .Java, path: .constant([]))
 }

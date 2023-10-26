@@ -17,7 +17,8 @@ enum ModuleNavigation: Identifiable {
 
 struct LearnView: View {
     
-    @Binding var path:NavigationPath
+    //@Binding var path:NavigationPath
+    @Binding var path:[AppNav]
     
     var body: some View {
         
@@ -28,6 +29,16 @@ struct LearnView: View {
                 List{
                     
                     NavigationLink(value: ModuleNavigation.java, label: {
+                        HStack {
+                            Image("JavaIcon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 35)
+                            Text("Java")
+                        }
+                    })
+                    
+                    NavigationLink(value: AppNav.module(.java), label: {
                         HStack {
                             Image("JavaIcon")
                                 .resizable()
@@ -71,11 +82,26 @@ struct LearnView: View {
                 }
             }
             
+            .navigationDestination(for: AppNav.self) { state in
+                switch state {
+                    
+                case .module(.java):
+                    ModuleView(module: "Java", destination: .Java, path: $path)
+                case .module(.python):
+                    ModuleView(module: "Python", destination: .Python, path: $path)
+                case .module(.swift):
+                    ModuleView(module: "Swift", destination: .Swift, path: $path)
+                case .moduleDetail(_):
+                    EmptyView()
+                    
+                }
+            }
+            
         }
         
     }
 }
 
 #Preview {
-    LearnView(path: .constant(NavigationPath()))
+    LearnView(path: .constant([]))
 }

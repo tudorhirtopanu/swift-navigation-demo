@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Binding var path:NavigationPath
+    //@Binding var path:NavigationPath
+    @Binding var path:[AppNav]
     @EnvironmentObject var nm: NavigationManager
     
     var body: some View {
@@ -21,6 +22,9 @@ struct HomeView: View {
 //                    path.append(nm.moduleDetailDestination)
 //                }
                 //path.append(nm.moduleDetailDestination)
+                //path.append(AppNav.module(.java))
+                path.append(contentsOf: [.module(.java), .moduleDetail(.Java)])
+                
             }, label: {
                 Text("Feature View")
             })
@@ -32,6 +36,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(path: .constant(NavigationPath()))
+    HomeView(path: .constant([]))
         .environmentObject(NavigationManager())
 }
