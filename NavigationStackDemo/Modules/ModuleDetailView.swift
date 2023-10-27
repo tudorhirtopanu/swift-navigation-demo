@@ -16,6 +16,12 @@ struct ModuleDetailView: View {
     var body: some View {
         VStack{
             
+            Button(action: {
+                path = [.module(.python), .moduleDetail(.Swift)]
+            }, label: {
+                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+            })
+            
             Text("This is the \(module) module")
             
         }

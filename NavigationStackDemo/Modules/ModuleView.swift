@@ -19,7 +19,7 @@ enum ModuleDetailNavigation:Identifiable {
 struct ModuleView: View {
     
     var module:String
-    var destination:ModuleDetailNavigation
+    var destination:AppNav
    // @Binding var path:NavigationPath
     @Binding var path:[AppNav]
     
@@ -40,23 +40,10 @@ struct ModuleView: View {
             
             
         }
-        .navigationDestination(for: ModuleDetailNavigation.self) { state in
-            
-            switch state {
-            case .Java:
-                ModuleDetailView(path: $path, module: "Java")
-            case .Python:
-                ModuleDetailView(path: $path, module: "Python")
-            case .Swift:
-                ModuleDetailView(path: $path, module: "Swift")
-            }
-            
-        }
-        
         
     }
 }
 
 #Preview {
-    ModuleView(module: "Java", destination: .Java, path: .constant([]))
+    ModuleView(module: "Java", destination: .moduleDetail(.Java), path: .constant([]))
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-    //@Binding var path:NavigationPath
     @Binding var path:[AppNav]
     @EnvironmentObject var nm: NavigationManager
     

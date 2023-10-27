@@ -16,7 +16,6 @@ struct RootView: View {
     
     @State var selectedTab: Tabs = .home
     
-   // @State var path:NavigationPath = NavigationPath()
     @State var path:[AppNav] = []
     @StateObject var nm = NavigationManager()
     
@@ -45,27 +44,20 @@ struct RootView: View {
                     switch state {
                         
                     case .module(.java):
-                        ModuleView(module: "Java", destination: .Java, path: $path)
+                        ModuleView(module: "Java", destination: .moduleDetail(.Java), path: $path)
                     case .module(.python):
-                        ModuleView(module: "Python", destination: .Python, path: $path)
+                        ModuleView(module: "Python", destination: .moduleDetail(.Python), path: $path)
                     case .module(.swift):
-                        ModuleView(module: "Swift", destination: .Swift, path: $path)
-                    case .moduleDetail(_):
-                        EmptyView()
+                        ModuleView(module: "Swift", destination: .moduleDetail(.Swift), path: $path)
+                    case .moduleDetail(.Java):
+                        ModuleDetailView(path: $path, module: "Java")
+                    case .moduleDetail(.Python):
+                        ModuleDetailView(path: $path, module: "Python")
+                    case .moduleDetail(.Swift):
+                        ModuleDetailView(path: $path, module: "Swift")
                         
                     }
-                }
-                .navigationDestination(for: ModuleNavigation.self) { state in
-                    switch state {
-                    case .java:
-                        ModuleView(module: "Java", destination: .Java, path: $path)
-                    case .python:
-                        ModuleView(module: "Python", destination: .Python, path: $path)
-                    case .swift:
-                        ModuleView(module: "Swift", destination: .Swift, path: $path)
-                    }
-                }
-                
+                }                
             
         }
         

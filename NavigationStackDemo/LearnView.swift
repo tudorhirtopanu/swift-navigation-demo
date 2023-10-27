@@ -17,7 +17,6 @@ enum ModuleNavigation: Identifiable {
 
 struct LearnView: View {
     
-    //@Binding var path:NavigationPath
     @Binding var path:[AppNav]
     
     var body: some View {
@@ -27,17 +26,7 @@ struct LearnView: View {
             VStack{
                 
                 List{
-                    
-                    NavigationLink(value: ModuleNavigation.java, label: {
-                        HStack {
-                            Image("JavaIcon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 35)
-                            Text("Java")
-                        }
-                    })
-                    
+                                        
                     NavigationLink(value: AppNav.module(.java), label: {
                         HStack {
                             Image("JavaIcon")
@@ -48,7 +37,7 @@ struct LearnView: View {
                         }
                     })
                     
-                    NavigationLink(value: ModuleNavigation.python, label: {
+                    NavigationLink(value: AppNav.module(.python), label: {
                         HStack {
                             Image("PythonIcon")
                                 .resizable()
@@ -58,7 +47,7 @@ struct LearnView: View {
                         }
                     })
                     
-                    NavigationLink(value: ModuleNavigation.swift, label: {
+                    NavigationLink(value: AppNav.module(.swift), label: {
                         HStack {
                             Image("SwiftIcon")
                                 .resizable()
@@ -67,32 +56,25 @@ struct LearnView: View {
                             Text("Swift")
                         }
                     })
-                    
+                                                            
                 }
                 
             }
-            .navigationDestination(for: ModuleNavigation.self) { state in
-                switch state {
-                case .java:
-                    ModuleView(module: "Java", destination: .Java, path: $path)
-                case .python:
-                    ModuleView(module: "Python", destination: .Python, path: $path)
-                case .swift:
-                    ModuleView(module: "Swift", destination: .Swift, path: $path)
-                }
-            }
-            
             .navigationDestination(for: AppNav.self) { state in
                 switch state {
                     
                 case .module(.java):
-                    ModuleView(module: "Java", destination: .Java, path: $path)
+                    ModuleView(module: "Java", destination: .moduleDetail(.Java), path: $path)
                 case .module(.python):
-                    ModuleView(module: "Python", destination: .Python, path: $path)
+                    ModuleView(module: "Python", destination: .moduleDetail(.Python), path: $path)
                 case .module(.swift):
-                    ModuleView(module: "Swift", destination: .Swift, path: $path)
-                case .moduleDetail(_):
-                    EmptyView()
+                    ModuleView(module: "Swift", destination: .moduleDetail(.Swift), path: $path)
+                case .moduleDetail(.Java):
+                    ModuleDetailView(path: $path, module: "Java")
+                case .moduleDetail(.Python):
+                    ModuleDetailView(path: $path, module: "Python")
+                case .moduleDetail(.Swift):
+                    ModuleDetailView(path: $path, module: "Swift")
                     
                 }
             }
