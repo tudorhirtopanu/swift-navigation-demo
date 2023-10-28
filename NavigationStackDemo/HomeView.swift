@@ -12,17 +12,31 @@ struct HomeView: View {
     @Binding var path:[AppNav]
     @EnvironmentObject var nm: NavigationManager
     
+   // var map:[[AppNav]:ButtonModuleValue] = [:]
+    @State var recentlyAccessedModules:[[AppNav]] = [[.module(.java), .moduleDetail(.Java)]]
+    
+    let stringValues: [String] = ["swift", "Swift", "java", "Java"]
+    
     var body: some View {
         VStack {
             
+            Text(String(recentlyAccessedModules.count))
+            
+            
+            
             Button(action: {
-//                path.append(nm.moduleDestination)
-//                if nm.moduleDetailDestination != nil {
-//                    path.append(nm.moduleDetailDestination)
-//                }
-                //path.append(nm.moduleDetailDestination)
-                //path.append(AppNav.module(.java))
-                path.append(contentsOf: [.module(.java), .moduleDetail(.Java)])
+                
+               // path.append(contentsOf: [.module(.java), .moduleDetail(.Java)])
+                
+                path.append(contentsOf: stringValues.compactMap { stringValue in
+                    if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
+                        return .module(moduleNavigation)
+                    } else if let moduleDetailNavigation = ModuleDetailNavigation(rawValue: stringValue) {
+                        return .moduleDetail(moduleDetailNavigation)
+                    } else {
+                        return nil
+                    }
+                })
                 
             }, label: {
                 Text("Feature View")

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct NavigationStackDemoApp: App {
@@ -13,5 +14,6 @@ struct NavigationStackDemoApp: App {
         WindowGroup {
             RootView()
         }
+        .modelContainer(for: ModuleData.self)
     }
 }

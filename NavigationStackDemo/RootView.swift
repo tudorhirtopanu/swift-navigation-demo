@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import SwiftData
 
-enum AppNav:Hashable {
+enum AppNav:Hashable{
     case module(ModuleNavigation)
     case moduleDetail(ModuleDetailNavigation)
 }

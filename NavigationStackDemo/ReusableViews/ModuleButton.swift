@@ -7,28 +7,34 @@
 
 import SwiftUI
 
+enum ButtonModuleValue{
+    case java(module: ModuleNavigation, detailView: ModuleDetailNavigation)
+}
+
 struct ModuleButton: View {
     
     var module:String
     
     var body: some View {
-        VStack {
             Button(action: {
                 
             }, label: {
                 ZStack {
-                    
+                    Rectangle()
+                        .clipShape(.rect(cornerSize: CGSize(width: 10, height: 10)))
+                        .shadow(radius: 5)
+                        .foregroundStyle(.gray.opacity(0.15))
+                        .frame(width: 150, height: 150)
                     VStack {
                         Image("\(module)Icon")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 35)
-                        Text(module)
+                            .frame(width: 100)
+                        //Text(module)
                     }
                 }
             })
             .foregroundStyle(Color.black)
-        }
     }
 }
 

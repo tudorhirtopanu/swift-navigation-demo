@@ -14,6 +14,25 @@ enum ModuleDetailNavigation:Identifiable {
     case Swift
     
     var id: Self { self }
+    
+    // Define the rawValue for each case
+       var rawValue: String {
+           switch self {
+           case .Java: return "Java"
+           case .Python: return "Python"
+           case .Swift: return "Swift"
+           }
+       }
+       
+       // Initialize from rawValue
+       init?(rawValue: String) {
+           switch rawValue {
+           case "Java": self = .Java
+           case "Python": self = .Python
+           case "Swift": self = .Swift
+           default: return nil
+           }
+       }
 }
 
 struct ModuleView: View {

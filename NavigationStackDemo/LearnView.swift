@@ -7,12 +7,31 @@
 
 import SwiftUI
 
-enum ModuleNavigation: Identifiable {
+enum ModuleNavigation: Identifiable, RawRepresentable {
     case java
     case python
     case swift
     
     var id: Self { self }
+    
+    // Define the rawValue for each case
+        var rawValue: String {
+            switch self {
+            case .java: return "java"
+            case .python: return "python"
+            case .swift: return "swift"
+            }
+        }
+        
+        // Initialize from rawValue
+        init?(rawValue: String) {
+            switch rawValue {
+            case "java": self = .java
+            case "python": self = .python
+            case "swift": self = .swift
+            default: return nil
+            }
+        }
 }
 
 struct LearnView: View {
