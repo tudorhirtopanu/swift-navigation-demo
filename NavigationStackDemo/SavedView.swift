@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SavedView: View {
     
     @Binding var path:[AppNav]
+    @Environment(\.modelContext) private var context
     @EnvironmentObject var nm: NavigationManager
     
     var body: some View {
         VStack{
             
             Button(action: {
-                nm.moduleDestination = .swift
+               // nm.moduleDestination = .swift
+                addItem()
             }, label: {
                 ZStack {
                     
@@ -33,6 +36,15 @@ struct SavedView: View {
             
         }
     }
+    
+    func addItem() {
+        
+        let item = ModuleData(recentlyAccessedModule: ["swift", "Swift"])
+        print("item added")
+        context.insert(item)
+        
+    }
+    
 }
 
 #Preview {
