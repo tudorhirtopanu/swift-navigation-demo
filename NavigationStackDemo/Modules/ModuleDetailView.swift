@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ModuleDetailView: View {
     
@@ -13,6 +14,7 @@ struct ModuleDetailView: View {
     @Binding var path:[AppNav]
     var module:String
     @Environment(\.modelContext) private var context
+    @Query private var items: [ModuleData]
     
     var body: some View {
         VStack{
@@ -53,6 +55,10 @@ struct ModuleDetailView: View {
                 case .moduleDetail(let moduleDetailNav):
                     return moduleDetailNav.rawValue
                 }
+            }
+            
+            if items.count>1 {
+                context.delete(items[0])
             }
             
             NavigationManager.addRecentlyAccessed(itemToAdd: rawValues, moduleName: module, context: context)

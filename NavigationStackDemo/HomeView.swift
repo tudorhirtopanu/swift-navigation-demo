@@ -16,31 +16,14 @@ struct HomeView: View {
     @Query private var items: [ModuleData]
     @Environment(\.modelContext) private var context
    // var map:[[AppNav]:ButtonModuleValue] = [:]
-    @State var recentlyAccessedModules:[[AppNav]] = [[.module(.java), .moduleDetail(.Java)]]
-    
-    let stringValues: [String] = ["swift", "Swift", "java", "Java"]
-    
+        
     var body: some View {
         VStack {
-            
+            Text("Recently Accessed")
             List{
-                ForEach(items) {item in
+                ForEach(items.reversed()) {item in
                     
                     Button(action: {
-                        
-                        /*
-                        for item in items {
-                            for stringValue in item.recentlyAccessedModule {
-                                if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
-                                    path.append(.module(moduleNavigation))
-                                    print("string1: ", stringValue)
-                                } else if let moduleDetailNavigation = ModuleDetailNavigation(rawValue: stringValue) {
-                                    path.append(.moduleDetail(moduleDetailNavigation))
-                                    print("string2: ", stringValue)
-                                }
-                            }
-                        }
-                         */
                         
                         path = item.recentlyAccessedModule.compactMap { stringValue in
                             if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
@@ -52,11 +35,12 @@ struct HomeView: View {
                             }
                         }
 
-                        //print(item.recentlyAccessedModule)
-                        //print("Path: \(path)")
                     }, label: {
                         Text(item.moduleName)
                     })
+                    
+                    
+                    
                 }
                 .onDelete(perform: { indexSet in
                     for index in indexSet {
@@ -65,12 +49,18 @@ struct HomeView: View {
                 })
             }
             
-            Text("Recently Accessed")
+            Button(action: {
+                //var lastItem = items.count - 1
+                deleteItem(items[0])
+            }, label: {
+                Text("Shuffle")
+            })
             
             Text("Home View")
         }
         
     }
+    
     
     func deleteItem(_ item: ModuleData){
         context.delete(item)
