@@ -19,7 +19,7 @@ struct SavedView: View {
             
             Button(action: {
                // nm.moduleDestination = .swift
-                addItem()
+                addItem(itemToAdd: ["swift", "Swift"], moduleName: "Swift")
             }, label: {
                 ZStack {
                     
@@ -34,12 +34,29 @@ struct SavedView: View {
             })
             .foregroundStyle(Color.black)
             
+            Button(action: {
+               // nm.moduleDestination = .swift
+                addItem(itemToAdd: ["python", "Python"], moduleName: "Python")
+            }, label: {
+                ZStack {
+                    
+                    VStack {
+                        Image("PythonIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 35)
+                        Text("Python")
+                    }
+                }
+            })
+            .foregroundStyle(Color.black)
+            
         }
     }
     
-    func addItem() {
+    func addItem(itemToAdd:[String], moduleName:String) {
         
-        let item = ModuleData(recentlyAccessedModule: ["swift", "Swift"])
+        let item = ModuleData(recentlyAccessedModule: itemToAdd, moduleName: moduleName)
         print("item added")
         context.insert(item)
         

@@ -12,13 +12,16 @@ import SwiftData
 class ModuleData: Identifiable {
     
     var id:String
-    var recentlyAccessedModule:[String]
     
-    init(recentlyAccessedModule:[String]){
+    @Attribute(.unique)
+    var recentlyAccessedModule:[String]
+    var moduleName:String
+    
+    init(recentlyAccessedModule:[String], moduleName:String){
         
         self.id = UUID().uuidString
         self.recentlyAccessedModule = recentlyAccessedModule
-        
+        self.moduleName = moduleName
     }
     
 }

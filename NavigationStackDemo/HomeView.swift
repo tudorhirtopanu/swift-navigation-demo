@@ -27,19 +27,35 @@ struct HomeView: View {
                 ForEach(items) {item in
                     
                     Button(action: {
+                        
+                        /*
                         for item in items {
                             for stringValue in item.recentlyAccessedModule {
                                 if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
                                     path.append(.module(moduleNavigation))
+                                    print("string1: ", stringValue)
                                 } else if let moduleDetailNavigation = ModuleDetailNavigation(rawValue: stringValue) {
                                     path.append(.moduleDetail(moduleDetailNavigation))
+                                    print("string2: ", stringValue)
                                 }
                             }
                         }
+                         */
+                        
+                        path = item.recentlyAccessedModule.compactMap { stringValue in
+                            if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
+                                return .module(moduleNavigation)
+                            } else if let moduleDetailNavigation = ModuleDetailNavigation(rawValue: stringValue) {
+                                return .moduleDetail(moduleDetailNavigation)
+                            } else {
+                                return nil
+                            }
+                        }
 
-                        print(item.recentlyAccessedModule)
+                        //print(item.recentlyAccessedModule)
+                        //print("Path: \(path)")
                     }, label: {
-                        Text("Recent Module")
+                        Text(item.moduleName)
                     })
                 }
                 .onDelete(perform: { indexSet in
@@ -53,17 +69,19 @@ struct HomeView: View {
                 
                // path.append(contentsOf: [.module(.java), .moduleDetail(.Java)])
                 
-                path.append(contentsOf: stringValues.compactMap { stringValue in
-                    if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
-                        return .module(moduleNavigation)
-                        
-                    } else if let moduleDetailNavigation = ModuleDetailNavigation(rawValue: stringValue) {
-                        return .moduleDetail(moduleDetailNavigation)
-                        
-                    } else {
-                        return nil
-                    }
-                })
+//                path.append(contentsOf: stringValues.compactMap { stringValue in
+//                    if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
+//                        return .module(moduleNavigation)
+//                        
+//                    } else if let moduleDetailNavigation = ModuleDetailNavigation(rawValue: stringValue) {
+//                        return .moduleDetail(moduleDetailNavigation)
+//                        
+//                    } else {
+//                        return nil
+//                    }
+//                })
+                
+                
                 
             }, label: {
                 Text("Feature View")
