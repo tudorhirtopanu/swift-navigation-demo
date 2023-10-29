@@ -8,9 +8,11 @@
 import SwiftUI
 import SwiftData
 
-enum AppNav:Hashable{
+enum AppNav:Hashable, Identifiable{
     case module(ModuleNavigation)
     case moduleDetail(ModuleDetailNavigation)
+    
+    var id: Self { self }
 }
 
 struct RootView: View {

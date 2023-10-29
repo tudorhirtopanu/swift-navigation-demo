@@ -12,6 +12,7 @@ struct ModuleDetailView: View {
    // @Binding var path:NavigationPath
     @Binding var path:[AppNav]
     var module:String
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         VStack{
@@ -24,10 +25,41 @@ struct ModuleDetailView: View {
             
             Text("This is the \(module) module")
             
+            let rawValues = path.map { (appNav) -> String in
+                switch appNav {
+                case .module(let moduleNav):
+                    return moduleNav.rawValue
+                case .moduleDetail(let moduleDetailNav):
+                    return moduleDetailNav.rawValue
+                }
+            }
+            
+            Button(action: {
+                
+                print(rawValues)
+            }, label: {
+                Text("Print path")
+            })
+            
+            
+            
+        }
+        .onAppear{
+            
+            let rawValues = path.map { (appNav) -> String in
+                switch appNav {
+                case .module(let moduleNav):
+                    return moduleNav.rawValue
+                case .moduleDetail(let moduleDetailNav):
+                    return moduleDetailNav.rawValue
+                }
+            }
+            
+            NavigationManager.addRecentlyAccessed(itemToAdd: rawValues, moduleName: module, context: context)
         }
     }
 }
 
-#Preview {
-    ModuleDetailView(path: .constant([]), module: "Java")
-}
+//#Preview {
+//    ModuleDetailView(path: .constant([]), module: "Java")
+//}

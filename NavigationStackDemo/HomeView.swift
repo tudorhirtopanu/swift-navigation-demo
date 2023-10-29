@@ -65,27 +65,7 @@ struct HomeView: View {
                 })
             }
             
-            Button(action: {
-                
-               // path.append(contentsOf: [.module(.java), .moduleDetail(.Java)])
-                
-//                path.append(contentsOf: stringValues.compactMap { stringValue in
-//                    if let moduleNavigation = ModuleNavigation(rawValue: stringValue) {
-//                        return .module(moduleNavigation)
-//                        
-//                    } else if let moduleDetailNavigation = ModuleDetailNavigation(rawValue: stringValue) {
-//                        return .moduleDetail(moduleDetailNavigation)
-//                        
-//                    } else {
-//                        return nil
-//                    }
-//                })
-                
-                
-                
-            }, label: {
-                Text("Feature View")
-            })
+            Text("Recently Accessed")
             
             Text("Home View")
         }
