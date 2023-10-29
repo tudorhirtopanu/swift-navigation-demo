@@ -57,9 +57,20 @@ struct ModuleDetailView: View {
                 }
             }
             
+            // only allow 2 modules
+            
             if items.count>1 {
                 context.delete(items[0])
             }
+            
+            // remove module if it is already in list
+            let item = ModuleData(recentlyAccessedModule: rawValues, moduleName: module)
+            
+            if items.contains(item){
+                context.delete(item)
+            }
+            
+            // add module back
             
             NavigationManager.addRecentlyAccessed(itemToAdd: rawValues, moduleName: module, context: context)
         }
