@@ -19,12 +19,6 @@ struct ModuleDetailView: View {
     var body: some View {
         VStack{
             
-            Button(action: {
-                path = [.module(.python), .moduleDetail(.Swift)]
-            }, label: {
-                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-            })
-            
             Text("This is the \(module) module")
             
             let rawValues = path.map { (appNav) -> String in
@@ -57,22 +51,26 @@ struct ModuleDetailView: View {
                 }
             }
             
-            // only allow 2 modules
+            // TODO: if module is first and is accessed, it deletes the other module
             
-            if items.count>1 {
-                context.delete(items[0])
+            //let item = ModuleData(recentlyAccessedModule: rawValues, moduleName: module)
+            
+            if items.reversed()[0].recentlyAccessedModule != rawValues {
+                if items.count>2 {
+                    context.delete(items[0])
+                    print("deleted2 \(items[0])")
+                }
+                // add module back
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    NavigationManager.addRecentlyAccessed(itemToAdd: rawValues, moduleName: module, context: context)
+                }
+                
             }
             
-            // remove module if it is already in list
-            let item = ModuleData(recentlyAccessedModule: rawValues, moduleName: module)
             
-            if items.contains(item){
-                context.delete(item)
-            }
+                        
             
-            // add module back
             
-            NavigationManager.addRecentlyAccessed(itemToAdd: rawValues, moduleName: module, context: context)
         }
     }
 }

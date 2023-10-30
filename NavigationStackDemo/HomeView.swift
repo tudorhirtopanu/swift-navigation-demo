@@ -19,6 +19,7 @@ struct HomeView: View {
         
     var body: some View {
         VStack {
+            
             Text("Recently Accessed")
             List{
                 ForEach(items.reversed()) {item in
@@ -44,19 +45,26 @@ struct HomeView: View {
                 }
                 .onDelete(perform: { indexSet in
                     for index in indexSet {
-                        deleteItem(items[index])
+                        deleteItem(items.reversed()[index])
                     }
                 })
             }
             
             Button(action: {
                 //var lastItem = items.count - 1
-                deleteItem(items[0])
+                print(items[0].recentlyAccessedModule)
             }, label: {
-                Text("Shuffle")
+                Text("print items")
             })
             
             Text("Home View")
+        }
+        .onAppear{
+            // repeat this multiple times (loop?) until theres only 2 items
+            if items.count>2 {
+                context.delete(items[0])
+                print("items deleted")
+            }
         }
         
     }

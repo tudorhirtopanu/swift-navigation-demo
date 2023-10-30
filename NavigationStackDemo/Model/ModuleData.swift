@@ -13,7 +13,7 @@ class ModuleData: Identifiable {
     
     var id:String
     
-    @Attribute(.unique)
+    //@Attribute(.unique)
     var recentlyAccessedModule:[String]
     var moduleName:String
     
