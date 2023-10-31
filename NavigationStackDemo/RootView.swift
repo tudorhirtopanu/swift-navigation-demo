@@ -69,4 +69,5 @@ struct RootView: View {
 
 #Preview {
     RootView()
+        .modelContainer(previewContainer)
 }

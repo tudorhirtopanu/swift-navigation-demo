@@ -77,6 +77,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(path: .constant([]))
-        .environmentObject(NavigationManager())
+        HomeView(path: .constant([]))
+            .environmentObject(NavigationManager())
+            .modelContainer(previewContainer)
 }

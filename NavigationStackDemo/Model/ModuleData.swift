@@ -24,4 +24,9 @@ class ModuleData: Identifiable {
         self.moduleName = moduleName
     }
     
+    static func example() -> ModuleData {
+        let module = ModuleData(recentlyAccessedModule: ["java", "Java"], moduleName: "Java")
+        return module
+    }
+    
 }

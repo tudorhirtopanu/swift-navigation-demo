@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B15BAAC2AF1061000344AE5 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15BAAB2AF1061000344AE5 /* PreviewSampleData.swift */; };
 		8B27871E2AE9858B00662268 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B27871D2AE9858B00662268 /* SavedView.swift */; };
 		8B2787212AEB0A2100662268 /* ModuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2787202AEB0A2100662268 /* ModuleButton.swift */; };
 		8B2787242AEB0FB000662268 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2787232AEB0FB000662268 /* NavigationManager.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B15BAAB2AF1061000344AE5 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 		8B27871D2AE9858B00662268 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		8B2787202AEB0A2100662268 /* ModuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleButton.swift; sourceTree = "<group>"; };
 		8B2787232AEB0FB000662268 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B15BAAA2AF105F700344AE5 /* PreviewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				8B15BAAB2AF1061000344AE5 /* PreviewSampleData.swift */,
+			);
+			path = PreviewHelpers;
+			sourceTree = "<group>";
+		};
 		8B27871F2AEB094800662268 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		8BA3C8D02AE1545600FDD7D1 /* NavigationStackDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8B15BAAA2AF105F700344AE5 /* PreviewHelpers */,
 				8BA3C8D12AE1545600FDD7D1 /* NavigationStackDemoApp.swift */,
 				8BA3C8D32AE1545600FDD7D1 /* RootView.swift */,
 				8B373F9A2AE8107000EBC046 /* HomeView.swift */,
@@ -210,6 +221,7 @@
 				8B2787242AEB0FB000662268 /* NavigationManager.swift in Sources */,
 				8B373FA52AE83EE300EBC046 /* ModuleView.swift in Sources */,
 				8B373F9B2AE8107000EBC046 /* HomeView.swift in Sources */,
+				8B15BAAC2AF1061000344AE5 /* PreviewSampleData.swift in Sources */,
 				8BA3C8D42AE1545600FDD7D1 /* RootView.swift in Sources */,
 				8B373FAB2AE8471D00EBC046 /* ModuleDetailView.swift in Sources */,
 				8BA3C8D22AE1545600FDD7D1 /* NavigationStackDemoApp.swift in Sources */,
